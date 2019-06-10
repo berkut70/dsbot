@@ -1,6 +1,7 @@
 const Discord = module.require("discord.js");
 const fs = require("fs");
 module.exports.run = async (dsbot,message,args) => {
+    console.log(args);
     let profile = require('../profile.json');
     let uid = message.author.id;
     let u = profile[uid];

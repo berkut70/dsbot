@@ -1,12 +1,11 @@
-const Discord = require('discord.js');
+﻿const Discord = require('discord.js');
 const dsbot = new Discord.Client();
 dsbot.commands = new Discord.Collection();
 const fs = require("fs");
 let config = require('./botconfig.json');
-let token = config.token;
-let prefix = config.prefix;
+let token = config.tokentest;
+let prefix = config.prefixtest;
 let profile = require('./profile.json');
-
 fs.readdir('./cmds/',(err,files)=>{
     if (err) console.log(err);
     let jsfiles = files.filter(f => f.split(".").pop() === "js");
@@ -26,7 +25,7 @@ dsbot.on('ready', () => {
 });
 
 dsbot.on('message', async message => {
-  if (message.author.dsbot) return;
+  if (message.author.bot) return;
   if (message.channel.type == "dm") return;
   let user = message.author.username;
   let uid = message.author.id;
@@ -51,7 +50,7 @@ dsbot.on('message', async message => {
   })
   let messageArray = message.content.split(" ");
   let command = messageArray[0];
-  let args = messageArray.slice(1).toLowerCase;
+  let args = messageArray.slice(1);
   if (!message.content.startsWith(prefix)) return;
   let cmd = dsbot.commands.get(command.slice(prefix.length));
   if (cmd) cmd.run(dsbot,message,args);
