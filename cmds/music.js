@@ -4,10 +4,8 @@ const YTDL = require("ytdl-core");
 var servers = {};
 function play(connection, message) {
     var server = servers[message.guild.id];
-    server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-    console.log(server);
+    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
     server.queue.shift();
-    server.dispatcher.on('error', console.error);
     server.dispatcher.on("end", function() {
         if (server.queue[0]) play(connection, message);
         else connection.disconnect();
