@@ -3,8 +3,8 @@ const dsbot = new Discord.Client();
 dsbot.commands = new Discord.Collection();
 const fs = require("fs");
 let config = require('./botconfig.json');
-let token = config.tokentest;
-let prefix = config.prefixtest;
+let token = config.token;
+let prefix = config.prefix;
 let profile = require('./profile.json');
 fs.readdir('./cmds/',(err,files)=>{
     if (err) console.log(err);
