@@ -21,7 +21,7 @@ fs.readdir('./cmds/',(err,files)=>{
 
 dsbot.on('ready', () => {
   console.log(`Бот ${dsbot.user.username} активен!`);
-  bot.user.setGame('Саня, хуй соси!');
+  dsbot.user.setGame('Саня, хуй соси!');
   dsbot.generateInvite(["ADMINISTRATOR"]).then(link => {console.log(link);})
 });
 
